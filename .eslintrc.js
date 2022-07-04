@@ -9,6 +9,7 @@ module.exports = {
   extends: ["plugin:vue/vue3-essential", "@vue/standard"],
   parserOptions: {
     parser: "@babel/eslint-parser",
+    requireConfigFile: false,
   },
   // 错误级别分为3种 off 或 0 关闭 / warn 或 1 警告 / error 或 2 程序退出
   rules: {
