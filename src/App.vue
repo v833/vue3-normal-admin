@@ -1,11 +1,19 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author:
+ * @Date: 2022-07-04 22:54:30
+ * @LastEditors: v833 2507301541@qq.com
+ * @LastEditTime: 2022-07-05 00:16:19
+-->
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
-
+<script></script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
