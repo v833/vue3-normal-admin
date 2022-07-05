@@ -4,7 +4,7 @@
  * @Author: 
  * @Date: 2022-07-04 23:52:31
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-05 00:13:29
+ * @LastEditTime: 2022-07-05 22:33:51
  */
 module.exports = {
   // 可选类型
@@ -30,5 +30,7 @@ module.exports = {
     footer: '请输入提交的其他信息: ',
     confirmCommit: '确认提交吗? (y/n)',
   },
+  // 跳过提交提示
+  skipQuestions: ['body','footer'],
   subjectLimit: 72
-},
+}
