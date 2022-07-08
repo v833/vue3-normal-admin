@@ -3,8 +3,8 @@
  * @version:
  * @Author:
  * @Date: 2022-07-04 22:54:30
- * @LastEditors: wangqun
- * @LastEditTime: 2022-07-04 23:36:32
+ * @LastEditors: v833 2507301541@qq.com
+ * @LastEditTime: 2022-07-06 00:03:10
  */
 // ESlint 配置文件遵循commonJS的导出规则, 所导出的对象就是ESlint的配置对象
 module.exports = {
@@ -21,7 +21,9 @@ module.exports = {
   },
   // 错误级别分为3种 off 或 0 关闭 / warn 或 1 警告 / error 或 2 程序退出
   rules: {
+    'vue/multi-word-component-names': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-unused-vars': 1
   }
 }

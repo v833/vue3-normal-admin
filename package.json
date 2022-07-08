@@ -1,51 +1,45 @@
-/*
- * @Author: v833 2507301541@qq.com
- * @Date: 2022-07-05 22:54:35
- * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-05 23:04:00
- * @FilePath: /code/vue3-normal-admin/package.json
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 {
-	"name": "vue3-normal-admin",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "vue-cli-service serve",
-		"build": "vue-cli-service build",
-		"lint": "vue-cli-service lint",
-		"prepare": "husky install"
-	},
-	"dependencies": {
-		"core-js": "^3.8.3",
-		"vue": "^3.2.13",
-		"vue-router": "^4.0.3",
-		"vuex": "^4.0.0"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.12.16",
-		"@babel/eslint-parser": "^7.12.16",
-		"@commitlint/cli": "12.1.4",
-		"@commitlint/config-conventional": "12.1.4",
-		"@vue/cli-plugin-babel": "~5.0.0",
-		"@vue/cli-plugin-eslint": "~5.0.0",
-		"@vue/cli-plugin-router": "~5.0.0",
-		"@vue/cli-plugin-vuex": "~5.0.0",
-		"@vue/cli-service": "~5.0.0",
-		"@vue/eslint-config-standard": "^6.1.0",
-		"cz-customizable": "^6.9.0",
-		"eslint": "^7.32.0",
-		"eslint-plugin-import": "^2.25.3",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^5.1.0",
-		"eslint-plugin-vue": "^8.0.3",
-		"husky": "7.0.1",
-		"sass": "^1.32.7",
-		"sass-loader": "^12.0.0"
-	},
-	"config": {
-		"commitizen": {
-			"path": "node_modules/cz-customizable"
-		}
-	}
+  "name": "vue3-normal-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "element-plus": "^1.0.2-beta.28",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "cz-customizable": "^6.9.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "husky": "7.0.1",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0",
+    "vue-cli-plugin-element-plus": "~0.0.13"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  }
 }
