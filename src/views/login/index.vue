@@ -2,34 +2,29 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-05 23:40:51
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-08 23:26:32
- * @FilePath: /code/vue3-normal-admin/src/views/login/index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditTime: 2022-07-11 22:31:14
+ * @Description: login
 -->
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
       <!-- username -->
-      <el-form-item>
+      <el-form-item prop="userName">
         <span class="svg-container">
-          <el-icon>
-            <Avatar />
-          </el-icon>
-          <el-input placeholder="username" name="username" type="text"></el-input>
+          <svg-icon icon="user" />
+          <el-input placeholder="username" name="username" type="text" v-model="loginForm.userName"></el-input>
         </span>
       </el-form-item>
       <!-- password -->
-      <el-form-item>
+      <el-form-item prop="password">
         <span class="svg-container">
-          <el-icon>
-            <User />
-          </el-icon>
-          <el-input placeholder="password" name="password" type="password"></el-input>
-          <span class="show-pwd">
-            <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @click="onChangePwdType" />
+          <svg-icon icon="password" />
+          <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
+          <span class="show-pwd" @click="onChangePwdType">
+            <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>
         </span>
       </el-form-item>
@@ -40,18 +35,39 @@
 </template>
 
 <script setup>
-import { Avatar, User } from '@element-plus/icons'
 import { ref } from 'vue'
+import { validatePassword } from './rules'
 
-const passwordType = ref('password')
-const form = ref({
-
+const loginForm = ref({
+  userName: 'super-admin',
+  password: '123456'
 })
-const handleLoginClick = () => {
-  console.log(form.value)
+
+const loginRules = ref({
+  userName: [{
+    required: true,
+    trigger: 'blur',
+    message: '请输入用户名'
+  }],
+  password: [{
+    required: true,
+    trigger: 'blur',
+    // message: '请输入密码',
+    validator: validatePassword()
+  }]
+})
+
+// 处理密码框类型
+const passwordType = ref('password')
+const onChangePwdType = () => {
+  // console.log('passwordType: ', passwordType)
+  passwordType.value === 'password' ? passwordType.value = 'text' : passwordType.value = 'password'
 }
 
-const onChangePwdType = () => { }
+const handleLoginClick = () => {
+
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -61,7 +77,7 @@ $light_gray: #eee;
 $cursor: #fff;
 
 .login-container {
-  min-height: 100%;
+  min-height: 100vh;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
@@ -145,7 +161,7 @@ $cursor: #fff;
   .show-pwd {
     position: absolute;
     right: 10px;
-    top: 7px;
+    top: 11px;
     font-size: 16px;
     color: $dark_gray;
     cursor: pointer;
