@@ -2,12 +2,12 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-05 23:40:51
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-11 22:31:14
+ * @LastEditTime: 2022-07-11 23:52:33
  * @Description: login
 -->
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginRules">
+    <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -29,7 +29,8 @@
         </span>
       </el-form-item>
       <!-- 登陆按钮 -->
-      <el-button @click="handleLoginClick" type="primary" style="width:100%;margin-bottom:30px">登陆</el-button>
+      <el-button @click="handleLoginClick" type="primary" :loading="loading" style="width:100%;margin-bottom:30px">登陆
+      </el-button>
     </el-form>
   </div>
 </template>
@@ -37,6 +38,7 @@
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
+import { useStore } from 'vuex'
 
 const loginForm = ref({
   userName: 'super-admin',
@@ -64,8 +66,27 @@ const onChangePwdType = () => {
   passwordType.value === 'password' ? passwordType.value = 'text' : passwordType.value = 'password'
 }
 
+// login
+const loading = ref(false)
+const store = useStore()
+// === vue2 this.$ref.loginFormRef
+const loginFormRef = ref(null)
 const handleLoginClick = () => {
+  // 1. 进行表单校验
+  loginFormRef.value.validate(async valid => {
+    if (!valid) return
+    loading.value = true
+    try {
+      store.dispatch('user/login', loginForm.value)
+    } catch (error) {
+      console.log('error: ', error)
+    } finally {
+      loading.value = false
+    }
+  })
+  // 2. 触发登陆动作
 
+  // 3. 进行登陆后处理
 }
 
 </script>

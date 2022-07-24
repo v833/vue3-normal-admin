@@ -4,7 +4,7 @@
  * @Author:
  * @Date: 2022-07-04 22:54:30
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-06 00:03:10
+ * @LastEditTime: 2022-07-11 23:37:06
  */
 // ESlint 配置文件遵循commonJS的导出规则, 所导出的对象就是ESlint的配置对象
 module.exports = {
@@ -24,6 +24,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-unused-vars': 1
+    'no-unused-vars': 1,
+    'space-before-function-paren': 'off'
   }
 }
