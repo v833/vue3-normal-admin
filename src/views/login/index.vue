@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-05 23:40:51
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-11 23:52:33
+ * @LastEditTime: 2022-07-24 11:52:42
  * @Description: login
 -->
 <template>
@@ -38,7 +38,9 @@
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
+
 import { useStore } from 'vuex'
+import router from '@/router'
 
 const loginForm = ref({
   userName: 'super-admin',
@@ -72,20 +74,21 @@ const store = useStore()
 // === vue2 this.$ref.loginFormRef
 const loginFormRef = ref(null)
 const handleLoginClick = () => {
+  store.commit('user/setToken', 'super-midin')
   // 1. 进行表单校验
-  loginFormRef.value.validate(async valid => {
-    if (!valid) return
-    loading.value = true
-    try {
-      store.dispatch('user/login', loginForm.value)
-    } catch (error) {
-      console.log('error: ', error)
-    } finally {
-      loading.value = false
-    }
-  })
+  // loginFormRef.value.validate(async valid => {
+  //   if (!valid) return
+  //   loading.value = true
+  //   try {
+  //     store.dispatch('user/login', loginForm.value)
+  //   } catch (error) {
+  //     console.log('error: ', error)
+  //   } finally {
+  //     loading.value = false
+  //   }
+  // })
   // 2. 触发登陆动作
-
+  router.push('/')
   // 3. 进行登陆后处理
 }
 
