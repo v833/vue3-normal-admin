@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-05 23:40:51
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-24 13:27:50
+ * @LastEditTime: 2022-07-24 23:12:22
  * @Description: login
 -->
 <template>
@@ -22,7 +22,8 @@
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon="password" />
-          <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
+          <el-input @keyup.enter='handleLoginClick' placeholder="password" name="password" :type="passwordType"
+            v-model="loginForm.password"></el-input>
           <span class="show-pwd" @click="onChangePwdType">
             <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>

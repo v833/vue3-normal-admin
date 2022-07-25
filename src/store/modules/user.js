@@ -1,9 +1,11 @@
 
 // import { login } from '@/api/sys.js'
 import { TOKEN } from '@/constant'
-import { getItem, setItem } from '@/utils/storage'
+import { getItem, removeAllItem, setItem } from '@/utils/storage'
 import { ElMessage } from 'element-plus'
-import { userInfo } from '@/mock/index'
+import { userInfo as _userInfo } from '@/mock/index'
+import router from '@/router'
+import { setTimeStamp } from '@/utils/auth'
 // import md5 from 'md5'
 export default {
   namespaced: true,
@@ -15,9 +17,16 @@ export default {
     setToken(state, token) {
       state.token = token
       setItem(TOKEN, token)
+      setTimeStamp()
     },
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo
+    },
+    logout() {
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllItem()
+      router.push('/login')
     }
   },
   actions: {
@@ -29,7 +38,7 @@ export default {
 
       if (userName === 'super-admin' && password === '123456') {
         this.commit('user/setToken', 'super-admin')
-        this.commit('user/setUserInfo', userInfo)
+        this.commit('user/setUserInfo', _userInfo)
       } else {
         ElMessage.error('用户名或密码错误!')
       }
