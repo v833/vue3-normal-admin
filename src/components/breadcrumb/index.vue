@@ -2,22 +2,24 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-30 12:26:19
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-30 13:25:40
+ * @LastEditTime: 2022-07-30 13:28:48
  * @FilePath: /code/vue3-normal-admin/src/components/breadcrumb/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <el-breadcrumb class="breadcrumb" separator="/">
-    <el-breadcrumb-item v-for="(item, index) in breadcrumbData" :key="item.path">
-      <!-- 不可点击 -->
-      <span v-if="index === breadcrumbData.length - 1" class="no-redirect">
-        {{ item.meta.title }}
-      </span>
-      <!-- 可点击 -->
-      <a v-else class="redirect" @click="handleLinkClick(item)">
-        {{ item.meta.title }}
-      </a>
-    </el-breadcrumb-item>
+    <transition-group name="breadcrumb">
+      <el-breadcrumb-item v-for="(item, index) in breadcrumbData" :key="item.path">
+        <!-- 不可点击 -->
+        <span v-if="index === breadcrumbData.length - 1" class="no-redirect">
+          {{ item.meta.title }}
+        </span>
+        <!-- 可点击 -->
+        <a v-else class="redirect" @click="handleLinkClick(item)">
+          {{ item.meta.title }}
+        </a>
+      </el-breadcrumb-item>
+    </transition-group>
   </el-breadcrumb>
 </template>
 

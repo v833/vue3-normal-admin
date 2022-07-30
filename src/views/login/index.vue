@@ -2,14 +2,15 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-05 23:40:51
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-24 23:12:22
+ * @LastEditTime: 2022-07-30 15:00:51
  * @Description: login
 -->
 <template>
   <div class="login-container">
     <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <langSelect></langSelect>
       </div>
       <!-- username -->
       <el-form-item prop="userName">
@@ -30,13 +31,17 @@
         </span>
       </el-form-item>
       <!-- 登陆按钮 -->
-      <el-button @click="handleLoginClick" type="primary" :loading="loading" style="width:100%;margin-bottom:30px">登陆
+      <el-button @click="handleLoginClick" type="primary" :loading="loading" style="width:100%;margin-bottom:30px">{{
+          $t('msg.login.loginBtn')
+      }}
       </el-button>
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
+import LangSelect from '@/components/langSelect'
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 
@@ -191,5 +196,12 @@ $cursor: #fff;
     cursor: pointer;
     user-select: none;
   }
+}
+
+.tips {
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  margin-bottom: 10px;
 }
 </style>
