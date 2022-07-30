@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-05 23:40:51
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-30 15:00:51
+ * @LastEditTime: 2022-07-30 16:24:12
  * @Description: login
 -->
 <template>
@@ -10,7 +10,7 @@
     <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">{{ $t('msg.login.title') }}</h3>
-        <langSelect></langSelect>
+        <langSelect class="lang-select" effect="light"></langSelect>
       </div>
       <!-- username -->
       <el-form-item prop="userName">
@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import LangSelect from '@/components/langSelect'
 import { ref } from 'vue'
 import { validatePassword } from './rules'
@@ -52,12 +53,12 @@ const loginForm = ref({
   userName: 'super-admin',
   password: '123456'
 })
-
+const i18n = useI18n()
 const loginRules = ref({
   userName: [{
     required: true,
     trigger: 'blur',
-    message: '请输入用户名'
+    message: i18n.t('msg.login.usernameRule')
   }],
   password: [{
     required: true,

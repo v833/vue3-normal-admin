@@ -1,9 +1,13 @@
+<!--
+ * @Author: v833 2507301541@qq.com
+ * @Date: 2022-07-30 14:55:39
+ * @LastEditors: v833 2507301541@qq.com
+ * @LastEditTime: 2022-07-30 16:05:55
+ * @FilePath: /code/vue3-normal-admin/src/components/LangSelect/index.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
-  <el-dropdown
-    trigger="click"
-    class="international"
-    @command="handleSetLanguage"
-  >
+  <el-dropdown trigger="click" class="international" @command="handleSetLanguage">
     <div>
       <el-tooltip :content="$t('msg.navBar.lang')" :effect="effect">
         <svg-icon id="guide-lang" icon="language" />
@@ -32,7 +36,7 @@ defineProps({
   effect: {
     type: String,
     default: 'dark',
-    validator: function(value) {
+    validator: function (value) {
       // 这个值必须匹配下列字符串中的一个
       return ['dark', 'light'].indexOf(value) !== -1
     }

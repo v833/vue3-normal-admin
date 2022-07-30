@@ -52,7 +52,7 @@ export default {
     lang: 'Globalization',
     guide: 'Function Guide',
     home: 'Home',
-    course: 'Course homepage',
+    course: 'Personal homepage',
     logout: 'Log out'
   },
   guide: {

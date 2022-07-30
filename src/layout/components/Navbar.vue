@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 12:10:12
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-30 12:32:32
+ * @LastEditTime: 2022-07-30 16:13:13
  * @FilePath: /code/vue3-normal-admin/src/views/layout/components/NavBar.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,6 +13,8 @@
     <!-- 面包屑 -->
     <breadcrumb class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
+      <!-- 语言选择 -->
+      <LangSelect class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -22,12 +24,12 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item>主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
             </router-link>
             <a target="__blank" href="https://github.com/v833">
-              <el-dropdown-item>个人主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="handleLogoutClick">退出登陆</el-dropdown-item>
+            <el-dropdown-item divided @click="handleLogoutClick">{{ $t('msg.navBar.logout') }}</el-dropdown-item>
 
           </el-dropdown-menu>
         </template>
@@ -40,6 +42,7 @@
 import { useStore } from 'vuex'
 import Hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/breadcrumb/index.vue'
+import LangSelect from '@/components/langSelect/index.vue'
 const store = useStore()
 const handleLogoutClick = () => {
   store.commit('user/logout')
@@ -90,6 +93,23 @@ const handleLogoutClick = () => {
           margin-right: 12px
         }
       }
+    }
+  }
+}
+
+::v-deep .right-menu-item {
+  display: inline-block;
+  padding: 0 18px 0 0;
+  font-size: 24px;
+  color: #5a5e66;
+  vertical-align: text-bottom;
+
+  &.hover-effect {
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
     }
   }
 }

@@ -52,7 +52,7 @@ export default {
     lang: '国际化',
     guide: '功能引导',
     home: '首页',
-    course: '课程主页',
+    course: '个人主页',
     logout: '退出登录'
   },
   guide: {
