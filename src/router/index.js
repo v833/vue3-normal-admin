@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-04 22:54:30
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-25 22:08:20
+ * @LastEditTime: 2022-07-30 13:24:59
  * @FilePath: /code/vue3-normal-admin/src/router/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,7 +13,7 @@ const privateRoutes = [
   {
     path: '/user',
     component: Layout,
-    redirect: 'user/manage',
+    redirect: '/user/manage',
     meta: {
       title: 'user',
       icon: 'personnel'
@@ -115,7 +115,7 @@ const publicRoutes = [
         name: 'Profile',
         component: () => import('@/views/profile/index.vue'),
         meta: {
-          title: '个人中心',
+          title: 'profile',
           icon: 'el-icon-user'
         }
       },

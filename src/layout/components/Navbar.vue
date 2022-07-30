@@ -2,12 +2,16 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 12:10:12
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-24 23:08:26
+ * @LastEditTime: 2022-07-30 12:32:32
  * @FilePath: /code/vue3-normal-admin/src/views/layout/components/NavBar.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="navbar">
+    <!-- 汉堡 -->
+    <hamburger class="hamburger-container"></hamburger>
+    <!-- 面包屑 -->
+    <breadcrumb class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -34,7 +38,8 @@
 
 <script setup>
 import { useStore } from 'vuex'
-
+import Hamburger from '@/components/hamburger/index.vue'
+import Breadcrumb from '@/components/breadcrumb/index.vue'
 const store = useStore()
 const handleLogoutClick = () => {
   store.commit('user/logout')
@@ -48,6 +53,23 @@ const handleLogoutClick = () => {
   position: relative;
   background-color: #fff;
   box-shadow: 1px 4px rgba(0, 21, 41, 0.08);
+
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    // hover 动画
+    transition: background 0.5s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .breadcrumb-container {
+    float: left
+  }
 
   .right-menu {
     display: flex;
