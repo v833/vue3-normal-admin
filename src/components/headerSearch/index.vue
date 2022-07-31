@@ -1,8 +1,11 @@
 <template>
   <div :class="{ show: isShow }" class="header-search">
+    <!-- <el-tooltip :content="$t('msg.navBar.headerSearch')"> -->
     <span @click.stop="onShowClick">
       <svg-icon class-name="search-icon" icon="search" />
     </span>
+    <!-- </el-tooltip> -->
+
     <el-select ref="headerSearchSelectRef" class="header-search-select" v-model="search" filterable default-first-option
       remote placeholder="Search" :remote-method="querySearch" @change="onSelectChange">
       <el-option v-for="option in searchOptions" :key="option.item.path" :label="option.item.title.join(' > ')"
