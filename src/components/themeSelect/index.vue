@@ -3,7 +3,7 @@
   <el-dropdown v-bind="$attrs" trigger="click" class="theme" @command="handleSetTheme">
     <div>
       <el-tooltip :content="$t('msg.navBar.themeChange')">
-        <svg-icon id="guide-theme" icon="change-theme" />
+        <svg-icon icon="change-theme" />
       </el-tooltip>
     </div>
     <template #dropdown>

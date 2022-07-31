@@ -2,25 +2,31 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 12:10:12
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-31 11:52:57
+ * @LastEditTime: 2022-07-31 23:40:57
  * @FilePath: /code/vue3-normal-admin/src/views/layout/components/NavBar.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="navbar">
     <!-- 汉堡 -->
-    <hamburger class="hamburger-container"></hamburger>
+    <hamburger id="guide-hamburger" class="hamburger-container"></hamburger>
     <!-- 面包屑 -->
-    <breadcrumb class="breadcrumb-container"></breadcrumb>
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
+      <!-- 引导 -->
+      <guide id="guide-start" class="right-menu-item hover-effect" />
       <!-- 全局搜索 -->
-      <HeaderSearch class="right-menu-item hover-effect" />
+      <HeaderSearch id="guide-search" class="right-menu-item hover-effect" />
       <!-- 全屏 -->
-      <Screenfull class="right-menu-item hover-effect" />
+      <Screenfull id="guide-full" class="right-menu-item hover-effect" />
       <!-- 换肤 -->
-      <ThemeSelect class="right-menu-item hover-effect" />
+      <span id="guide-theme">
+        <ThemeSelect class="right-menu-item hover-effect" />
+      </span>
       <!-- 语言选择 -->
-      <LangSelect class="right-menu-item hover-effect" />
+      <span id="guide-lang">
+        <LangSelect class="right-menu-item hover-effect" />
+      </span>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -52,6 +58,7 @@ import LangSelect from '@/components/langSelect/index.vue'
 import ThemeSelect from '@/components/themeSelect/index.vue'
 import Screenfull from '@/components/screenfull/index.vue'
 import HeaderSearch from '@/components/headerSearch/index.vue'
+import Guide from '@/components/guide/index.vue'
 const store = useStore()
 const handleLogoutClick = () => {
   store.commit('user/logout')
