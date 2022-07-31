@@ -30,6 +30,17 @@ export default {
     changeTagsView(state, { index, tag }) {
       state.tagsViewList[index] = tag
       setItem(TAGS_VIEW, state.tagsViewList)
+    },
+
+    removeTagsView(state, { type, index }) {
+      if (type === 'other') {
+        state.tagsViewList = state.tagsViewList.filter((_, i) => i === index)
+      } else if (type === 'right') {
+        state.tagsViewList = state.tagsViewList.filter((_, i) => i <= index)
+      } else if (type === 'index') {
+        state.tagsViewList.splice(index, 1)
+      }
+      setItem(TAGS_VIEW, state.tagsViewList)
     }
   }
 }

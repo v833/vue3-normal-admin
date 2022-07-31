@@ -2,23 +2,31 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-31 18:42:44
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-31 21:39:36
+ * @LastEditTime: 2022-07-31 22:54:49
  * @FilePath: /code/vue3-normal-admin/src/components/tagsView/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
+
 <template>
   <div class="tags-view-container">
-    <router-link v-for="(tag, index) in $store.getters.tagsViewList" :key="tag.fullPath" class="tags-view-item"
-      :class="isActive(tag) ? 'active' : ''" :to="{ path: tag.fullPath }"
-      :style="{ backgroundColor: isActive(tag) ? $store.getters.cssVar.menuBg : '', borderColor: isActive(tag) ? $store.getters.cssVar.menuBg : '' }">
-      {{ tag.title }}
-      <i v-show="!isActive(tag)" class="el-icon-close" @click.prevent.stop="onCloseClick(index)"></i>
-    </router-link>
+    <el-scrollbar class="tags-view-wrapper">
+      <router-link v-for="(tag, index) in $store.getters.tagsViewList" :key="tag.fullPath" class="tags-view-item"
+        :class="isActive(tag) ? 'active' : ''" :to="{ path: tag.fullPath }"
+        :style="{ backgroundColor: isActive(tag) ? $store.getters.cssVar.menuBg : '', borderColor: isActive(tag) ? $store.getters.cssVar.menuBg : '' }"
+        @contextmenu.prevent="openMenu($event, index)">
+        {{ tag.title }}
+        <i v-show="!isActive(tag)" class="el-icon-close" @click.prevent.stop="onCloseClick(index)"></i>
+      </router-link>
+    </el-scrollbar>
+    <context-menu v-show="visible" :style="menuStyle" :index="contextIndex"></context-menu>
   </div>
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import ContextMenu from './contextMenu.vue'
 
 const route = useRoute()
 
@@ -27,7 +35,39 @@ const isActive = tag => {
   return tag.path === route.path
 }
 
-const onCloseClick = index => { }
+const store = useStore()
+const onCloseClick = index => {
+  store.commit('app/removeTagsView', {
+    type: 'index',
+    index
+  })
+}
+
+// 鼠标右键
+const visible = ref(false)
+const contextIndex = ref(0)
+const menuStyle = ref({
+  left: 0,
+  top: 0
+})
+const openMenu = (e, index) => {
+  const { x, y } = e
+  menuStyle.value.left = x + 'px'
+  menuStyle.value.top = y + 'px'
+  contextIndex.value = index
+  visible.value = true
+}
+
+const closeMenu = () => {
+  visible.value = false
+}
+watch(visible, val => {
+  if (val) {
+    document.body.addEventListener('click', closeMenu)
+  } else {
+    document.body.removeEventListener('click', closeMenu)
+  }
+})
 </script>
 
 <style lang="scss" scoped>

@@ -2,13 +2,20 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 12:10:21
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-31 22:01:19
+ * @LastEditTime: 2022-07-31 23:04:51
  * @FilePath: /code/vue3-normal-admin/src/views/layout/components/AppMain.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="app-main">
-    <router-view></router-view>
+    <!-- 带有切换动画, 并且具有缓存的router-view -->
+    <router-view v-slot='{ Component, route }'>
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive>
+          <component :is="Component" :key='route.path' />
+        </keep-alive>
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -70,7 +77,7 @@ watch(route, (to, from) => {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 61px 20px 20px 20px;
+  padding: 13px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>
