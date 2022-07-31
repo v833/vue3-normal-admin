@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 12:10:12
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-30 16:13:13
+ * @LastEditTime: 2022-07-31 11:29:59
  * @FilePath: /code/vue3-normal-admin/src/views/layout/components/NavBar.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,6 +13,10 @@
     <!-- 面包屑 -->
     <breadcrumb class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
+      <!-- 全屏 -->
+      <Screenfull class="right-menu-item hover-effect" />
+      <!-- 换肤 -->
+      <ThemeSelect class="right-menu-item hover-effect" />
       <!-- 语言选择 -->
       <LangSelect class="right-menu-item hover-effect" />
       <!-- 头像 -->
@@ -43,6 +47,8 @@ import { useStore } from 'vuex'
 import Hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/breadcrumb/index.vue'
 import LangSelect from '@/components/langSelect/index.vue'
+import ThemeSelect from '@/components/themeSelect/index.vue'
+import Screenfull from '@/components/screenfull/index.vue'
 const store = useStore()
 const handleLogoutClick = () => {
   store.commit('user/logout')
