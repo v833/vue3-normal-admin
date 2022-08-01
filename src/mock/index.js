@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 11:14:49
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-24 13:26:24
+ * @LastEditTime: 2022-08-01 23:49:14
  * @FilePath: /code/vue3-normal-admin/src/mock/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -214,3 +214,77 @@ export const userChapter = [
     id: 13
   }
 ]
+
+// 获取员工列表
+export const userList = {
+  list: [
+    {
+      role: [
+        {
+          id: '1',
+          title: '超级管理员'
+        }
+      ],
+      _id: '612710a0ec87aa543c9c341d',
+      id: '0',
+      openTime: '1433088000000',
+      username: 'super-admin',
+      mobile: '188xxxx0001',
+      avatar: 'https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png'
+    },
+    {
+      role: [
+        {
+          id: '2',
+          title: '管理员'
+        }
+      ],
+      _id: '612710a0ec87aa543c9c341e',
+      id: '1',
+      username: 'admin',
+      openTime: '1559318400000',
+      mobile: '188xxxx0002',
+      avatar: 'https://img4.sycdn.imooc.com/61110c2b0001152907400741-140-140.jpg'
+    }
+  ],
+  total: 2,
+  page: '1',
+  size: '2'
+}
+
+// 获取所有员工列表
+export const userListAll = {
+  list: [
+    {
+      role: [
+        {
+          id: '1',
+          title: '超级管理员'
+        }
+      ],
+      _id: '612710a0ec87aa543c9c341d',
+      id: '0',
+      openTime: '1433088000000',
+      username: 'super-admin',
+      mobile: '188xxxx0001',
+      avatar: 'https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png'
+    },
+    {
+      role: [
+        {
+          id: '2',
+          title: '管理员'
+        }
+      ],
+      _id: '612710a0ec87aa543c9c341e',
+      id: '1',
+      username: 'admin',
+      openTime: '1559318400000',
+      mobile: '188xxxx0002',
+      avatar: 'https://img4.sycdn.imooc.com/61110c2b0001152907400741-140-140.jpg'
+    }
+  ],
+  total: 7,
+  page: '1',
+  size: '2'
+}
