@@ -1,25 +1,10 @@
 <template>
-  <el-collapse v-model="activeName" accordion>
-    <el-collapse-item
-      v-for="item in features"
-      :key="item.id"
-      :title="item.title"
-      :name="item.id"
-    >
-      <div v-html="item.content"></div>
-    </el-collapse-item>
-  </el-collapse>
+  2
 </template>
 
 <script setup>
 import { ref, defineProps } from 'vue'
-const activeName = ref(0)
-defineProps({
-  features: {
-    type: Array,
-    required: true
-  }
-})
+
 </script>
 
 <style lang="scss" scoped>
