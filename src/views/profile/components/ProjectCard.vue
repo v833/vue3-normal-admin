@@ -2,23 +2,81 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-25 21:27:52
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-01 22:09:56
+ * @LastEditTime: 2022-08-01 23:09:18
  * @FilePath: /code/vue3-normal-admin/src/views/profile/components/ProjectCard.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  1
+
+  <el-card class="user-container">
+    <template #header>
+      <div class="header">
+        <span>{{ $t('msg.profile.introduce') }}</span>
+      </div>
+    </template>
+
+    <div class="user-profile">
+      <!-- 头像 -->
+      <div class="box-center">
+        <pan-thumb :image="$store.getters.userInfo.avatar" width="100px" height="100px">
+          <div>Hello</div>
+          {{ $store.getters.userInfo.title }}
+        </pan-thumb>
+      </div>
+      <!-- 姓名 & 角色 -->
+      <div class="box-center">
+        <div class="user-name text-center">
+          {{ $store.getters.userInfo.username }}
+        </div>
+        <div class="user-role text-center text-muted">
+          {{ $store.getters.userInfo.title }}
+        </div>
+      </div>
+    </div>
+    <!-- 简介 -->
+    <div class="project-bio">
+      <div class="project-bio-section">
+        <div class="project-bio-section-header">
+          <svg-icon icon="introduce"></svg-icon>
+          <span>{{ $t('msg.profile.projectIntroduction') }}</span>
+        </div>
+        <div class="project-bio-section-body">
+          <div class="text-muted">
+            {{ $t('msg.profile.muted') }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 项目功能 -->
+    <div class="project-bio">
+      <div class="project-bio-section">
+        <div class="project-bio-section-header">
+          <svg-icon icon="reward"></svg-icon>
+          <span>{{ $t('msg.profile.projectFunction') }}</span>
+        </div>
+      </div>
+      <div class="project-bio-section-body">
+        <div class="project-item" v-for="item in features" :key="item.id">
+          <div>{{ item.title }}</div>
+          <el-progress status="success" :percentage="item.percentage"></el-progress>
+        </div>
+      </div>
+    </div>
+  </el-card>
+
 </template>
 
 <script setup>
 import PanThumb from '@/components/panThumb/index.vue'
 import { defineProps } from 'vue'
+
 defineProps({
   features: {
     type: Array,
     required: true
   }
 })
+
 </script>
 
 <style lang="scss" scoped>

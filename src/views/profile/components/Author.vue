@@ -1,6 +1,18 @@
 <template>
   <div class="author-container">
-    3
+    <div class="header">
+      <pan-thumb image="https://img4.sycdn.imooc.com/61110c2b0001152907400741-140-140.jpg" height="60px" width="60px"
+        :hoverable="false">
+        {{ $t('msg.profile.name') }}
+      </pan-thumb>
+      <div class="header-desc">
+        <h3>{{ $t('msg.profile.name') }}</h3>
+        <span>{{ $t('msg.profile.job') }}</span>
+      </div>
+    </div>
+    <div class="info">
+      {{ $t('msg.profile.Introduction') }}
+    </div>
   </div>
 </template>
 
