@@ -2,7 +2,15 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-25 21:27:52
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-02 00:01:07
+ * @LastEditTime: 2022-08-03 22:32:47
+ * @FilePath: /code/vue3-normal-admin/src/views/user-manage/index.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!--
+ * @Author: v833 2507301541@qq.com
+ * @Date: 2022-07-25 21:27:52
+ * @LastEditors: v833 2507301541@qq.com
+ * @LastEditTime: 2022-08-03 21:12:54
  * @FilePath: /code/vue3-normal-admin/src/views/user-manage/index.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,7 +18,7 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
+        <el-button type="primary" @click="handleImportClick">{{ $t('msg.excel.importExcel') }}</el-button>
         <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
       </div>
     </el-card>
@@ -67,6 +75,9 @@
 <script setup>
 import { userList } from '@/mock/index.js'
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // 数据相关
 const tableData = ref([])
@@ -85,13 +96,24 @@ onMounted(() => {
   getListData()
 })
 
-const handleSizeChange = () => { }
-const handleCurrentChange = () => { }
+const handleSizeChange = (size) => {
+  size.value = size
+  getListData()
+}
+const handleCurrentChange = (page) => {
+  page.value = page
+  getListData()
+}
 
 // 操作方法
 const onShowClick = () => { }
 const onShowRoleClick = () => { }
 const onRemoveClick = () => { }
+
+// excel
+const handleImportClick = () => {
+  router.push('/user/import')
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,13 +1,11 @@
-/**
- * 导入数据对应表
+/*
+ * @Author: v833 2507301541@qq.com
+ * @Date: 2022-07-25 21:27:52
+ * @LastEditors: v833 2507301541@qq.com
+ * @LastEditTime: 2022-08-03 22:35:16
+ * @FilePath: /code/vue3-normal-admin/src/views/import/utils.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-export const USER_RELATIONS = {
-  姓名: 'username',
-  联系方式: 'mobile',
-  角色: 'role',
-  开通时间: 'openTime'
-}
-
 /**
  * 解析 excel 导入的时间格式
  */
