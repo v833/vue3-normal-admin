@@ -5,6 +5,7 @@
 </template>
 
 <script setup>
+import { userData } from '@/mock/index.js'
 
 import { defineProps, ref } from 'vue'
 

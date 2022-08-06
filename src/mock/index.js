@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 11:14:49
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-01 23:49:14
+ * @LastEditTime: 2022-08-04 00:19:42
  * @FilePath: /code/vue3-normal-admin/src/mock/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -287,4 +287,44 @@ export const userListAll = {
   total: 7,
   page: '1',
   size: '2'
+}
+
+// 获取指定员工信息
+export const userData = {
+  role: [
+    {
+      id: '1',
+      title: '超级管理员'
+    }
+  ],
+  remark: [
+    '超级管理员',
+    'BOSS'
+  ],
+  experience: [
+    {
+      startTime: '1538323200000',
+      endTime: '1551369600000',
+      title: '慕课网',
+      desc: '混合开发京东商城'
+    },
+    {
+      startTime: '1614528000000',
+      endTime: '1625068800000',
+      title: '慕课网',
+      desc: 'uni-app 开发企业级小程序'
+    }
+  ],
+  _id: '612710a0ec87aa543c9c341d',
+  id: '0',
+  openTime: '1433088000000',
+  username: 'super-admin',
+  title: '超级管理员',
+  mobile: '188xxxx0001',
+  avatar: 'https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png',
+  gender: '男',
+  nationality: '汉',
+  address: '北京市朝阳区xx大道 11xx0 号 3 层',
+  major: '在线职业教育平台',
+  glory: '国内领先的线上 IT 教育品牌'
 }

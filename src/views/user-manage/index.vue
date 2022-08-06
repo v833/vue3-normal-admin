@@ -1,25 +1,10 @@
-<!--
- * @Author: v833 2507301541@qq.com
- * @Date: 2022-07-25 21:27:52
- * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-03 22:32:47
- * @FilePath: /code/vue3-normal-admin/src/views/user-manage/index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<!--
- * @Author: v833 2507301541@qq.com
- * @Date: 2022-07-25 21:27:52
- * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-03 21:12:54
- * @FilePath: /code/vue3-normal-admin/src/views/user-manage/index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
+
 <template>
   <div class="user-manage-container">
     <el-card class="header">
       <div>
         <el-button type="primary" @click="handleImportClick">{{ $t('msg.excel.importExcel') }}</el-button>
-        <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+        <el-button type="success" @click="handleExportClick">{{ $t('msg.excel.exportExcel') }}</el-button>
       </div>
     </el-card>
 
@@ -53,66 +38,86 @@
             {{ $filters.dateFilter(row.openTime) }}
           </template>
         </el-table-column>
-        <!-- <el-table-column :label="$t('msg.excel.action')" fixed="right" width="260">
+        <el-table-column :label="$t('msg.excel.action')" fixed="right" width="260">
           <template #default="{ row }">
             <el-button type="primary" size="mini" @click="onShowClick(row._id)">{{ $t('msg.excel.show') }}</el-button>
-            <el-button type="info" size="mini" @click="onShowRoleClick(row)" v-permission="['distributeRole']">{{
+            <!-- v-permission="['distributeRole']" -->
+            <el-button type="info" size="mini" @click="onShowRoleClick(row)">{{
                 $t('msg.excel.showRole')
             }}</el-button>
-            <el-button type="danger" size="mini" @click="onRemoveClick(row)" v-permission="['removeUser']">{{
+            <!-- v-permission="['removeUser']" -->
+            <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{
                 $t('msg.excel.remove')
             }}</el-button>
           </template>
-        </el-table-column> -->
+        </el-table-column>
       </el-table>
       <el-pagination class="pagination" @size-change="handleSizeChange" @current-change="handleCurrentChange"
         :current-page="page" :page-size="size" :page-sizes="[2, 5, 10, 20]" layout="total,sizes,prev,pager,next,jumper"
         :total="total"></el-pagination>
     </el-card>
+    <export2-excel v-model="visible" :tableData="tableData"></export2-excel>
   </div>
 </template>
 
 <script setup>
+import Export2Excel from './components/export2Excel.vue'
 import { userList } from '@/mock/index.js'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const i18n = useI18n()
 
 // 数据相关
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
 const size = ref(2)
+const visible = ref(false)
 
 // 获取数据的方法
 const getListData = () => {
   tableData.value = userList.list
-  page.value = userList.page
-  size.value = userList.size
-  total.value = userList.total
+  page.value = +userList.page
+  size.value = +userList.size
+  total.value = +userList.total
 }
 onMounted(() => {
   getListData()
 })
 
 const handleSizeChange = (size) => {
-  size.value = size
-  getListData()
+  // size.value = size
+  // getListData()
 }
 const handleCurrentChange = (page) => {
-  page.value = page
-  getListData()
+  // page.value = page
+  // getListData()
 }
 
 // 操作方法
-const onShowClick = () => { }
+const onShowClick = (id) => {
+  router.push('/user/info/' + id)
+}
 const onShowRoleClick = () => { }
-const onRemoveClick = () => { }
+const onRemoveClick = (row) => {
+  ElMessageBox.confirm(i18n.t('msg.excel.dialogTitle1') + row.username + i18n.t('msg.excel.dialogTitle2'), {
+    type: 'warning'
+  }).then(() => {
+    tableData.value.length--
+    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
+  })
+}
 
 // excel
 const handleImportClick = () => {
   router.push('/user/import')
+}
+const handleExportClick = () => {
+  visible.value = true
 }
 </script>
 
