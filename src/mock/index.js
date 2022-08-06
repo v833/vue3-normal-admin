@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 11:14:49
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-06 12:11:38
+ * @LastEditTime: 2022-08-06 12:30:36
  * @FilePath: /code/vue3-normal-admin/src/mock/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -385,4 +385,69 @@ export const rolePermission = [
   '3',
   '4',
   '5'
+]
+
+// 获取所有权限
+export const permissionList = [
+  {
+    id: '1',
+    permissionName: '员工管理',
+    permissionMark: 'userManage',
+    permissionDesc: '员工管理菜单',
+    children: [
+      {
+        id: '1-1',
+        permissionName: '分配角色',
+        permissionMark: 'distributeRole',
+        permissionDesc: '为员工分配角色'
+      },
+      {
+        id: '1-2',
+        permissionName: '导入员工',
+        permissionMark: 'importUser',
+        permissionDesc: '通过 excel 导入员工'
+      },
+      {
+        id: '1-3',
+        permissionName: '删除员工',
+        permissionMark: 'removeUser',
+        permissionDesc: '删除员工'
+      }
+    ]
+  },
+  {
+    id: '2',
+    permissionName: '角色列表',
+    permissionMark: 'roleList',
+    permissionDesc: '角色列表菜单',
+    children: [
+      {
+        id: '2-1',
+        permissionName: '分配权限',
+        permissionMark: 'distributePermission',
+        permissionDesc: '为角色分配权限'
+      }
+    ]
+  },
+  {
+    id: '3',
+    permissionName: '权限列表',
+    permissionMark: 'permissionList',
+    permissionDesc: '权限列表菜单',
+    children: []
+  },
+  {
+    id: '4',
+    permissionName: '文章排名',
+    permissionMark: 'articleRanking',
+    permissionDesc: '文章排名菜单',
+    children: []
+  },
+  {
+    id: '5',
+    permissionName: '创建文章',
+    permissionMark: 'articleCreate',
+    permissionDesc: '创建文章页面',
+    children: []
+  }
 ]

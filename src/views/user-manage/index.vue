@@ -57,6 +57,7 @@
         :total="total"></el-pagination>
     </el-card>
     <export2-excel v-model="visible" :tableData="tableData"></export2-excel>
+    <dialog-roles v-model="rolesVislble" :userId="userId"></dialog-roles>
   </div>
 </template>
 
@@ -67,7 +68,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-
+import DialogRoles from './components/DialogRoles.vue'
 const router = useRouter()
 const i18n = useI18n()
 
@@ -102,7 +103,14 @@ const handleCurrentChange = (page) => {
 const onShowClick = (id) => {
   router.push('/user/info/' + id)
 }
-const onShowRoleClick = () => { }
+
+const rolesVislble = ref(false)
+const userId = ref('')
+const onShowRoleClick = (row) => {
+  rolesVislble.value = true
+  userId.value = row._id
+}
+
 const onRemoveClick = (row) => {
   ElMessageBox.confirm(i18n.t('msg.excel.dialogTitle1') + row.username + i18n.t('msg.excel.dialogTitle2'), {
     type: 'warning'

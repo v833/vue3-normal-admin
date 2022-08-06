@@ -1,11 +1,4 @@
-<!--
- * @Author: v833 2507301541@qq.com
- * @Date: 2022-08-03 23:01:59
- * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-04 00:08:19
- * @FilePath: /code/vue3-normal-admin/src/views/user-manage/components/Export2Excel.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
+
 <template>
   <el-dialog :title="$t('msg.excel.title')" :model-value="modelValue" @close="closed" width="30%">
     <el-input v-model="excelName" :placeholder="$t('msg.excel.placeholder')"></el-input>
