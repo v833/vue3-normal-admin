@@ -2,7 +2,7 @@
  * @Author: v833 2507301541@qq.com
  * @Date: 2022-07-24 11:14:49
  * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-08-04 00:19:42
+ * @LastEditTime: 2022-08-06 12:11:38
  * @FilePath: /code/vue3-normal-admin/src/mock/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -328,3 +328,61 @@ export const userData = {
   major: '在线职业教育平台',
   glory: '国内领先的线上 IT 教育品牌'
 }
+
+// 获取指定员工当前角色
+export const userRoles = {
+  role: [
+    {
+      id: '2',
+      title: '管理员'
+    }
+  ],
+  _id: '6124eacc0dafe231304546be'
+}
+
+// 获取所有角色
+export const roleList = [
+  {
+    id: '1',
+    title: '超级管理员',
+    describe: '唯一账号，可以操作系统所有功能'
+  },
+  {
+    id: '2',
+    title: '管理员',
+    describe: '由超管指定，可以为多个，协助超管管理系统'
+  },
+  {
+    id: '3',
+    title: '人事经理',
+    describe: '主管人事相关业务'
+  },
+  {
+    id: '4',
+    title: '销售经理',
+    describe: '主管销售相关业务'
+  },
+  {
+    id: '5',
+    title: '保安队长',
+    describe: '主管安保相关业务'
+  },
+  {
+    id: '6',
+    title: '员工',
+    describe: '普通员工'
+  }
+]
+
+// 获取指定角色的权限
+export const rolePermission = [
+  '1',
+  '1-1',
+  '1-2',
+  '1-3',
+  '2',
+  '2-1',
+  '3',
+  '4',
+  '5'
+]
