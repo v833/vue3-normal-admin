@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layout/index.vue'
-
+import store from '@/store'
 const requireAll = require.context('./modules', false, /\.js$/)
 
 // 私有路由表
@@ -48,5 +48,12 @@ const router = createRouter({
   // routes: [...publicRoutes, ...privateRoutes]
   routes: publicRoutes
 })
-
+export function resetRouter() {
+  if (store.getters.userInfo?.permission?.menus) {
+    const menus = store.getters.userInfo.permission.menus
+    menus.forEach(menu => {
+      router.removeRoute(menu)
+    })
+  }
+}
 export default router

@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-07-11 22:53:56
  * @LastEditors: v833
- * @LastEditTime: 2022-08-06 23:08:02
+ * @LastEditTime: 2022-08-07 00:15:12
  */
 
 // import { login } from '@/api/sys.js'
@@ -11,7 +11,7 @@ import { TOKEN } from '@/constant'
 import { getItem, removeAllItem, setItem } from '@/utils/storage'
 import { ElMessage } from 'element-plus'
 import { userInfo as _userInfo } from '@/mock/index'
-import router from '@/router'
+import router, { resetRouter } from '@/router'
 import { setTimeStamp } from '@/utils/auth'
 // import md5 from 'md5'
 export default {
@@ -30,6 +30,7 @@ export default {
       state.userInfo = userInfo
     },
     logout() {
+      resetRouter()
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeAllItem()
