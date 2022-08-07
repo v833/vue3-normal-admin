@@ -3,7 +3,7 @@
  * @Author: v833
  * @Date: 2022-07-11 22:53:56
  * @LastEditors: v833
- * @LastEditTime: 2022-08-07 00:15:12
+ * @LastEditTime: 2022-08-07 11:22:00
  */
 
 // import { login } from '@/api/sys.js'
@@ -30,7 +30,7 @@ export default {
       state.userInfo = userInfo
     },
     logout() {
-      resetRouter()
+      // resetRouter()
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeAllItem()
