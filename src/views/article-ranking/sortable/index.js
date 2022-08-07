@@ -1,7 +1,13 @@
+/*
+ * @Description:
+ * @Author: v833
+ * @Date: 2022-07-25 21:27:52
+ * @LastEditors: v833
+ * @LastEditTime: 2022-08-07 11:53:40
+ */
 import { ref } from 'vue'
 import Sortable from 'sortablejs'
 import i18n from '@/i18n'
-import { articleSort } from '@/api/article'
 import { ElMessage } from 'element-plus'
 
 // 排序相关
@@ -21,19 +27,19 @@ export const initSortable = (tableData, cb) => {
     // 拖拽时类名
     ghostClass: 'sortable-ghost',
     // 拖拽结束的回调方法
-    async onEnd(event) {
+    onEnd(event) {
       const { newIndex, oldIndex } = event
       // 修改数据
-      await articleSort({
-        initRanking: tableData.value[oldIndex].ranking,
-        finalRanking: tableData.value[newIndex].ranking
-      })
+      // await articleSort({
+      //   initRanking: tableData.value[oldIndex].ranking,
+      //   finalRanking: tableData.value[newIndex].ranking
+      // })
       ElMessage.success({
         message: i18n.global.t('msg.article.sortSuccess'),
         type: 'success'
       })
       // 直接重新获取数据无法刷新 table！！
-      tableData.value = []
+      // tableData.value = []
       // 重新获取数据
       cb && cb()
     }

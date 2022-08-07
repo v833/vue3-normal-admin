@@ -41,6 +41,7 @@ import { ElMessageBox, ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import { articleList } from '@/mock'
 import { dynamicData, tableColumns, selectDynamicLabel } from './dynamic/index'
+import { tableRef, initSortable } from './sortable'
 
 // 数据相关
 const tableData = ref([])
@@ -57,6 +58,7 @@ const getListData = () => {
 // 表格拖拽相关
 onMounted(() => {
   getListData()
+  initSortable(tableData)
 })
 
 /**

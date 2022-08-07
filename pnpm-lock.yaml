@@ -32,6 +32,7 @@ specifiers:
   sass: ^1.32.7
   sass-loader: ^12.0.0
   screenfull: ^6.0.2
+  sortablejs: ^1.15.0
   svg-sprite-loader: ^6.0.11
   vue: ^3.2.13
   vue-cli-plugin-element-plus: ~0.0.13
@@ -55,6 +56,7 @@ dependencies:
   path-browserify: 1.0.1
   rgb-hex: 4.0.0
   screenfull: 6.0.2
+  sortablejs: 1.15.0
   vue: 3.2.37
   vue-i18n: 9.1.10_vue@3.2.37
   vue-print-nb: 1.7.5
@@ -7697,6 +7699,10 @@ packages:
       uuid: 8.3.2
       websocket-driver: 0.7.4
     dev: true
+
+  /sortablejs/1.15.0:
+    resolution: {integrity: sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==}
+    dev: false
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
