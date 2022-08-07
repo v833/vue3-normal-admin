@@ -5,6 +5,7 @@ specifiers:
   '@babel/eslint-parser': ^7.12.16
   '@commitlint/cli': 12.1.4
   '@commitlint/config-conventional': 12.1.4
+  '@toast-ui/editor': ^3.2.0
   '@vue/cli-plugin-babel': ~5.0.0
   '@vue/cli-plugin-eslint': ~5.0.0
   '@vue/cli-plugin-router': ~5.0.0
@@ -26,6 +27,7 @@ specifiers:
   file-saver: 2.0.5
   fuse.js: 6.4.6
   husky: 7.0.1
+  i18next: ^21.8.16
   md5: ^2.3.0
   path-browserify: ^1.0.1
   rgb-hex: ^4.0.0
@@ -41,9 +43,11 @@ specifiers:
   vue-router: ^4.0.3
   vue3-print-nb: ^0.1.4
   vuex: ^4.0.0
+  wangeditor: ^4.7.15
   xlsx: 0.17.0
 
 dependencies:
+  '@toast-ui/editor': 3.2.0
   axios: 0.27.2
   core-js: 3.23.3
   css-color-function: 1.3.3
@@ -52,6 +56,7 @@ dependencies:
   element-plus: 1.1.0-beta.23_vue@3.2.37
   file-saver: 2.0.5
   fuse.js: 6.4.6
+  i18next: 21.8.16
   md5: 2.3.0
   path-browserify: 1.0.1
   rgb-hex: 4.0.0
@@ -63,6 +68,7 @@ dependencies:
   vue-router: 4.1.0_vue@3.2.37
   vue3-print-nb: 0.1.4
   vuex: 4.0.2_vue@3.2.37
+  wangeditor: 4.7.15
   xlsx: 0.17.0
 
 devDependencies:
@@ -1270,12 +1276,19 @@ packages:
       esutils: 2.0.3
     dev: true
 
+  /@babel/runtime-corejs3/7.18.9:
+    resolution: {integrity: sha512-qZEWeccZCrHA2Au4/X05QW5CMdm4VjUDCrGq5gf1ZDcM4hRqreKrtwAn7yci9zfgAS9apvnsFXiGBHBAxZdK9A==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.24.1
+      regenerator-runtime: 0.13.9
+    dev: false
+
   /@babel/runtime/7.18.6:
     resolution: {integrity: sha512-t9wi7/AW6XtKahAe20Yw0/mMljKq0B1r2fPdvaAdV/KPDZewFXdaaa6K7lxmZBZ8FBNpCiAT6iHPmd6QO9bKfQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
-    dev: true
 
   /@babel/template/7.18.6:
     resolution: {integrity: sha512-JoDWzPe+wgBsTTgdnIma3iHNFC7YVJoPssVBDjiHfNlyt4YcunDtcDOUmfVDfCK5MfdsaIoX9PkijPhjH3nYUw==}
@@ -1668,6 +1681,19 @@ packages:
   /@soda/get-current-script/1.0.2:
     resolution: {integrity: sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==}
     dev: true
+
+  /@toast-ui/editor/3.2.0:
+    resolution: {integrity: sha512-lEvbBSbvz5MvmTGHoDAYkco5B1os9C8B0IJmSj/iLmjSFQCtku1g4hFG4jKzTju9e+5wTosbDa3aYHAJAZK/QA==}
+    dependencies:
+      dompurify: 2.3.10
+      prosemirror-commands: 1.3.0
+      prosemirror-history: 1.3.0
+      prosemirror-inputrules: 1.2.0
+      prosemirror-keymap: 1.2.0
+      prosemirror-model: 1.18.1
+      prosemirror-state: 1.4.1
+      prosemirror-view: 1.27.0
+    dev: false
 
   /@trysound/sax/0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -3413,6 +3439,11 @@ packages:
       semver: 7.0.0
     dev: true
 
+  /core-js-pure/3.24.1:
+    resolution: {integrity: sha512-r1nJk41QLLPyozHUUPmILCEMtMw24NG4oWK6RbsDdjzQgg9ZvrUsPBj1MnG0wXXp1DCDU6j+wUvEmBSrtRbLXg==}
+    requiresBuild: true
+    dev: false
+
   /core-js/3.23.3:
     resolution: {integrity: sha512-oAKwkj9xcWNBAvGbT//WiCdOMpb9XQG92/Fe3ABFM/R16BsHgePG00mFOgKf7IsCtfj8tA1kHtf/VwErhriz5Q==}
     requiresBuild: true
@@ -3861,6 +3892,10 @@ packages:
     dependencies:
       domelementtype: 2.3.0
     dev: true
+
+  /dompurify/2.3.10:
+    resolution: {integrity: sha512-o7Fg/AgC7p/XpKjf/+RC3Ok6k4St5F7Q6q6+Nnm3p2zGWioAY6dh0CbbuwOhH2UcSzKsdniE/YnE2/92JcsA+g==}
+    dev: false
 
   /domready/1.0.8:
     resolution: {integrity: sha512-uIzsOJUNk+AdGE9a6VDeessoMCzF8RrZvJCX/W8QtyfgdR6Uofn/MvRonih3OtCO79b2VDzDOymuiABrQ4z3XA==}
@@ -5162,6 +5197,12 @@ packages:
     hasBin: true
     dev: true
 
+  /i18next/21.8.16:
+    resolution: {integrity: sha512-acJLCk38YMfEPjBR/1vS13SFY7rBQLs9E5m1tSRnWc9UW3f+SZszgH+NP1fZRA1+O+CdG2eLGGmuUMJW52EwzQ==}
+    dependencies:
+      '@babel/runtime': 7.18.6
+    dev: false
+
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -6387,6 +6428,10 @@ packages:
       wcwidth: 1.0.1
     dev: true
 
+  /orderedmap/2.0.0:
+    resolution: {integrity: sha512-buf4PoAMlh45b8a8gsGy/X6w279TSqkyAS0C0wdTSJwFSU+ljQFJON5I8NfjLHoCXwpSROIo2wr0g33T+kQshQ==}
+    dev: false
+
   /os-homedir/1.0.2:
     resolution: {integrity: sha512-B5JU3cabzk8c67mRRd3ECmROafjYMXbuzlwtqdM8IbS8ktlTix8aFGb2bAGKrSRIlnfKwovGUUr72JUPyOb6kQ==}
     engines: {node: '>=0.10.0'}
@@ -7057,6 +7102,63 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
+  /prosemirror-commands/1.3.0:
+    resolution: {integrity: sha512-BwBbZ5OAScPcm0x7H8SPbqjuEJnCU2RJT9LDyOiiIl/3NbL1nJZI4SFNHwU2e/tRr2Xe7JsptpzseqvZvToLBQ==}
+    dependencies:
+      prosemirror-model: 1.18.1
+      prosemirror-state: 1.4.1
+      prosemirror-transform: 1.6.0
+    dev: false
+
+  /prosemirror-history/1.3.0:
+    resolution: {integrity: sha512-qo/9Wn4B/Bq89/YD+eNWFbAytu6dmIM85EhID+fz9Jcl9+DfGEo8TTSrRhP15+fFEoaPqpHSxlvSzSEbmlxlUA==}
+    dependencies:
+      prosemirror-state: 1.4.1
+      prosemirror-transform: 1.6.0
+      rope-sequence: 1.3.3
+    dev: false
+
+  /prosemirror-inputrules/1.2.0:
+    resolution: {integrity: sha512-eAW/M/NTSSzpCOxfR8Abw6OagdG0MiDAiWHQMQveIsZtoKVYzm0AflSPq/ymqJd56/Su1YPbwy9lM13wgHOFmQ==}
+    dependencies:
+      prosemirror-state: 1.4.1
+      prosemirror-transform: 1.6.0
+    dev: false
+
+  /prosemirror-keymap/1.2.0:
+    resolution: {integrity: sha512-TdSfu+YyLDd54ufN/ZeD1VtBRYpgZnTPnnbY+4R08DDgs84KrIPEPbJL8t1Lm2dkljFx6xeBE26YWH3aIzkPKg==}
+    dependencies:
+      prosemirror-state: 1.4.1
+      w3c-keyname: 2.2.6
+    dev: false
+
+  /prosemirror-model/1.18.1:
+    resolution: {integrity: sha512-IxSVBKAEMjD7s3n8cgtwMlxAXZrC7Mlag7zYsAKDndAqnDScvSmp/UdnRTV/B33lTCVU3CCm7dyAn/rVVD0mcw==}
+    dependencies:
+      orderedmap: 2.0.0
+    dev: false
+
+  /prosemirror-state/1.4.1:
+    resolution: {integrity: sha512-U/LBDW2gNmVa07sz/D229XigSdDQ5CLFwVB1Vb32MJbAHHhWe/6pOc721faI17tqw4pZ49i1xfY/jEZ9tbIhPg==}
+    dependencies:
+      prosemirror-model: 1.18.1
+      prosemirror-transform: 1.6.0
+    dev: false
+
+  /prosemirror-transform/1.6.0:
+    resolution: {integrity: sha512-MAp7AjsjEGEqQY0sSMufNIUuEyB1ZR9Fqlm8dTwwWwpEJRv/plsKjWXBbx52q3Ml8MtaMcd7ic14zAHVB3WaMw==}
+    dependencies:
+      prosemirror-model: 1.18.1
+    dev: false
+
+  /prosemirror-view/1.27.0:
+    resolution: {integrity: sha512-yNCQW5eiPkrMgjOT5Xa/ItIvcM7JBG7ikZKaHo26hdBW5OLNnIWGZ0BV6/OiBk742teLybLVNPCpYUcW405Ckg==}
+    dependencies:
+      prosemirror-model: 1.18.1
+      prosemirror-state: 1.4.1
+      prosemirror-transform: 1.6.0
+    dev: false
+
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -7199,7 +7301,6 @@ packages:
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
-    dev: true
 
   /regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==}
@@ -7380,6 +7481,10 @@ packages:
     dependencies:
       glob: 7.2.3
     dev: true
+
+  /rope-sequence/1.3.3:
+    resolution: {integrity: sha512-85aZYCxweiD5J8yTEbw+E6A27zSnLPNDL0WfPdw3YYodq7WjnTKo0q4dtyQ2gz23iPT8Q9CUyJtAaUNcTxRf5Q==}
+    dev: false
 
   /run-async/2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
@@ -8263,7 +8368,6 @@ packages:
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: true
 
   /type-check/0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -8583,6 +8687,18 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.2.0
       vue: 3.2.37
+    dev: false
+
+  /w3c-keyname/2.2.6:
+    resolution: {integrity: sha512-f+fciywl1SJEniZHD6H+kUO8gOnwIr7f4ijKA6+ZvJFjeGi1r4PDLl53Ayud9O/rk64RqgoQine0feoeOU0kXg==}
+    dev: false
+
+  /wangeditor/4.7.15:
+    resolution: {integrity: sha512-aPTdREd8BxXVyJ5MI+LU83FQ7u1EPd341iXIorRNYSOvoimNoZ4nPg+yn3FGbB93/owEa6buLw8wdhYnMCJQLg==}
+    dependencies:
+      '@babel/runtime': 7.18.6
+      '@babel/runtime-corejs3': 7.18.9
+      tslib: 2.4.0
     dev: false
 
   /watchpack/2.4.0:

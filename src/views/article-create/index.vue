@@ -1,20 +1,51 @@
-<!--
- * @Author: v833 2507301541@qq.com
- * @Date: 2022-07-25 21:27:52
- * @LastEditors: v833 2507301541@qq.com
- * @LastEditTime: 2022-07-25 21:35:11
- * @FilePath: /code/vue3-normal-admin/src/views/article-create/index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template>
-  <div>
-    创建文章
+  <div class="article-create">
+    <el-card>
+      <el-input class="title-input" :placeholder="$t('msg.article.titlePlaceholder')" v-model="title" maxlength="20"
+        clearable>
+      </el-input>
+      <el-tabs v-model="activeName">
+        <el-tab-pane :label="$t('msg.article.markdown')" name="markdown">
+          <markdown :title="title" :detail="detail" @onSuccess="onSuccess"></markdown>
+        </el-tab-pane>
+        <el-tab-pane :label="$t('msg.article.richText')" name="editor">
+          <editor :title="title" :detail="detail" @onSuccess="onSuccess"></editor>
+        </el-tab-pane>
+      </el-tabs>
+    </el-card>
   </div>
 </template>
 
 <script setup>
+import Editor from './components/Editor.vue'
+import Markdown from './components/Markdown.vue'
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { articleDetail } from '@/mock'
+const activeName = ref('markdown')
+const title = ref('')
 
+// 创建成功
+const onSuccess = () => {
+  title.value = ''
+}
+
+// 处理编辑相关
+const route = useRoute()
+const articleId = route.params.id
+const detail = ref({})
+const getArticleDetail = () => {
+  detail.value = articleDetail
+  // 标题赋值
+  title.value = detail.value.title
+}
+if (articleId) {
+  getArticleDetail()
+}
 </script>
 
 <style lang="scss" scoped>
+.title-input {
+  margin-bottom: 20px;
+}
 </style>
